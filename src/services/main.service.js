@@ -20,7 +20,7 @@ async function mainService(req, res) {
         const imageUrl = weatherImages[weather];
         const imageBuffer = await fetchImage(imageUrl);
 
-        const compressedImageBuffer = await compressImage(imageBuffer);
+        const compressedImageBuffer = await compressImage(imageBuffer, 50);
         res.type('image/png').send(compressedImageBuffer).status(statusCode.OK);
     } catch (error) {
         console.error(error);
