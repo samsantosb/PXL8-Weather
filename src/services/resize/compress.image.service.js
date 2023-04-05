@@ -11,7 +11,7 @@ const sharp = require('sharp');
  * @returns {Promise<Buffer>} A Promise that resolves to a Buffer containing the compressed image data in JPEG format.
  * @throws {Error} Throws an error if there is an issue with the image compression process.
  */
-async function compressImage(imageBuffer, quality = 70) {
+async function compressImage(imageBuffer, quality = 100) {
     return sharp(imageBuffer)
         .jpeg({ quality })
         .toBuffer();
