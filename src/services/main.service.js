@@ -3,6 +3,7 @@ const { fetchWeatherData } = require('./fetch/fetch.weather.service');
 const { envs } = require('../envs/api.envs');
 const { statusCode } = require('../enums/status.code.enum');
 const { weatherImages } = require('../enums/weather.pictures.enum');
+const { compressImage } = require('./resize/compress.image.service');
 
 
 /**
@@ -19,7 +20,8 @@ async function mainService(req, res) {
         const imageUrl = weatherImages[weather];
         const imageBuffer = await fetchImage(imageUrl);
 
-        res.type('image/png').send(imageBuffer).status(statusCode.OK);
+        const compressedImageBuffer = await compressImage(imageBuffer);
+        res.type('image/png').send(compressedImageBuffer).status(statusCode.OK);
     } catch (error) {
         console.error(error);
         res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
