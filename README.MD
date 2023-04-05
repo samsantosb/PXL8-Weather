@@ -34,3 +34,6 @@ API_KEY=your-api-key
 3. If you want to use other images just go on enums and change the images url.
 
 4. If you want to change the city just go on envs and set your city.
+
+## Widget Pic
+![d39c72bd-6bf5-42dc-b248-1df1637410fc](https://user-images.githubusercontent.com/80002045/229542469-25199df4-33e5-47dc-b105-bd758914550b.jpg)
