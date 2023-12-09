@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-
 /**
  * Fetches an image from a given URL.
  *
@@ -12,21 +11,17 @@ const axios = require('axios');
  */
 async function fetchImage(imageUrl) {
     try {
-        const response = await axios.get(imageUrl, {
-            responseType: 'arraybuffer',
-        });
+        const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
         return response.data;
     } catch (error) {
         if (error.response && error.response.status === 403) {
             console.error('Forbidden error fetching image:', error);
             throw new Error('The server denied access to the image. Please check your credentials or permissions.');
-        } else {
-            console.error('Error fetching image:', error);
-            throw error;
         }
+        console.error('Error fetching image:', error);
+        throw error;
     }
 }
-
 
 module.exports = {
     fetchImage,
